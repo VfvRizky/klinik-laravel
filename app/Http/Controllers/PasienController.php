@@ -37,6 +37,7 @@ class PasienController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            
             'Nama' => 'required',
             'Alamat' => 'required',
             'Lahir' => 'required',
@@ -48,8 +49,9 @@ class PasienController extends Controller
             'Pekerjaan' => 'required'
         ]);
 
-        Pasien::create([
-            'nama'=>$request->Nama,
+        $Pasien= Pasien::create([
+            // 'kodepasien'=>$request->Kodepasien,
+            'nama'=>ucwords(strtolower($request->Nama)),
             'alamat'=>$request->Alamat,            
             'lahir'=>$request->Lahir,            
             'nik'=>$request->NIK,
@@ -60,6 +62,10 @@ class PasienController extends Controller
             'pekerjaan'=>$request->Pekerjaan
 
         ]);
+        $kode= 100000+ (integer)$Pasien -> id ;
+        $nomer= substr($kode, 1, 5). $Pasien -> lahir -> format ('dmy');
+        $Pasien -> kodepasien = $nomer ;
+        $Pasien -> save();
 
         return redirect('/pasien')->with('success','Data berhasil ditambahkan');
 
@@ -85,9 +91,10 @@ class PasienController extends Controller
      * @param  \App\Models\Pasien  $pasien
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pasien $pasien)
+    public function edit($id)
     {
-        //
+        $pasien = Pasien::findOrfail($id);
+        return view('pasien-form-edit', compact('pasien'));
     }
 
     /**
@@ -97,9 +104,37 @@ class PasienController extends Controller
      * @param  \App\Models\Pasien  $pasien
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pasien $pasien)
+    public function update(Request $request, $id)
     {
-        //
+        // dd($request);
+        $request->validate([
+            'Nama' => 'required',
+            'Alamat' => 'required',
+            'Lahir' => 'required',
+            'NIK' => 'required',
+            'Kelamin' => 'required',
+            'Telepon' => 'required',
+            'Agama' => 'required',
+            'Pendidikan' => 'required',
+            'Pekerjaan' => 'required'
+        ]);
+
+        $pasienedit = $request->all();
+        $pasien = Pasien::find($id);
+
+        $pasien->update([
+            'nama' => $request->Nama,
+            'alamat' => $request->Alamat,
+            'lahir' => $request->Lahir,
+            'nIK' => $request->NIK,
+            'kelamin' => $request->Kelamin,
+            'telepon' => $request->Telepon,
+            'agama' => $request->Agama,
+            'pendidikan' => $request->Pendidikan,
+            'pekerjaan' => $request->Pekerjaan
+        ]);
+
+        return redirect()->route('pasien.index')->with('success', 'Data telah diubah');
     }
 
     /**

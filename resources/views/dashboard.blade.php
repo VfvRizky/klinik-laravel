@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Poliklinik MajuSejahtera - Dashboard</title>
+    <title>Dashboard</title>
 
     <!-- Custom fonts for this template-->
     
@@ -22,6 +22,7 @@
     
     <link href="{{ asset ('css/sb-admin-2.css') }}" rel="stylesheet">
     <link href="{{ asset ('css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset ('img/icon.ico') }}" rel="SHORTCUT ICON" />
 
 </head>
 
@@ -38,17 +39,12 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Print</a>
+                        {{-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-download fa-sm text-white-50"></i> Print</a> --}}
                     </div>
 
-                    <!-- Content Row -->
-                    <div class="row">
-
-                        
-
-                        
-
+<!------------------------------------- Isi TOTAL HARIAN ----------------------------------->
+                    {{-- <div class="row">
                         <!-- Pending Requests Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-success shadow h-100 py-2">
@@ -66,14 +62,10 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
-                    <!-- Content Row -->
-
-                    
-
-                    <!-- Content Row -->
-                    <div class="row">
+<!------------------------------------- Isi  ----------------------------------->
+                    {{-- <div class="row">
 
                         <!-- Content Column -->
                         <div class="col-lg-6 mb-4">
@@ -189,7 +181,7 @@
 
                         
                         </div>
-                    </div>
+                    </div> --}}
 
                 </div>
                 <!-- /.container-fluid -->

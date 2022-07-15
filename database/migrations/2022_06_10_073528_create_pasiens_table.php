@@ -16,15 +16,16 @@ return new class extends Migration
         Schema::create('pasiens', function (Blueprint $table) {
             $table->id();
             
+            $table->string('kodepasien')->nullable();
             $table->string('nama');
-            $table->string('alamat');
+            $table->string('alamat')->nullable();
             $table->date('lahir');
-            $table->integer('nik');
+            $table->string('nik')->nullable();
             $table->string('kelamin');
-            $table->integer('telepon');
+            $table->string('telepon');
             $table->string('agama');
-            $table->string('pendidikan');
-            $table->string('pekerjaan');
+            $table->string('pendidikan')->nullable();
+            $table->string('pekerjaan')->nullable();
             
             $table->timestamps();
         });

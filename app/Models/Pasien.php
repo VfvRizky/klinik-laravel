@@ -9,6 +9,7 @@ class Pasien extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'kodepasien',
         'nama',
         'alamat',
         'lahir',
@@ -21,4 +22,6 @@ class Pasien extends Model
         
     ];
     protected $guarded =['id'];
+
+    protected $dates = ['lahir'];
 }
