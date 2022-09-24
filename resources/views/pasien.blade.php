@@ -14,7 +14,8 @@
         </div>
     @endif
     <div class="container">
-
+        <h1>Data Pasien</h1>
+        <br>
 
         </-------------------------------------------------------- Tabel
             -----------------------------------------------------------------------------------* />
@@ -38,8 +39,8 @@
                         <th>Tools</th>
                     </tr>
                 </thead>
-                @foreach ($datapasien as $p)
-                    <tbody>
+                <tbody>
+                    @foreach ($datapasien as $p)
                         <tr>
                             <td> {{ $loop->iteration }} </td>
                             <td> {{ $p->kodepasien }} </td>
@@ -56,14 +57,14 @@
                             </-------------------------------------------------------- edit
                                 -----------------------------------------------------------------------------------* />
                             <td class="text-sm">
-                                <a href="{{ route('pasien.edit', $p->id) }}" class="mx-3" data-bs-toggle="tooltip"
+                                {{-- <a href="{{ route('pasien.edit', $p->id) }}" class="mx-3" data-bs-toggle="tooltip"
                                     data-bs-original-title="Edit Pasien">
                                     <i class="fas fa-pen text-warning"></i>
-                                </a>
+                                </a> --}}
 
                                 </-------------------------------------------------------- lihat
                                     -----------------------------------------------------------------------------------* />
-                                <a href="/pasien/create" data-bs-toggle="tooltip" data-bs-original-title="Lihat Pasien">
+                                <a href="{{ route('pasien.edit', $p->id) }}" data-bs-toggle="tooltip" data-bs-original-title="Lihat Pasien">
                                     <i class="fas fa-book text-success"></i>
                                 </a>
 
@@ -73,13 +74,13 @@
                                     @method('DELETE')
                                     @csrf
                                     <button type="submit" class="badge bg-danger"
-                                        onClick="return confirm('Yakin ingin hapus data?')">delete</button>
+                                        onClick="return confirm('Yakin ingin hapus data?')">hapus</button>
 
                                 </form>
                             </td>
                         </tr>
-                    </tbody>
-                @endforeach
+                    @endforeach
+                </tbody>
             </table>
         </div>
 

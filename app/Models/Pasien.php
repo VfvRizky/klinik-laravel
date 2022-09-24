@@ -24,4 +24,10 @@ class Pasien extends Model
     protected $guarded =['id'];
 
     protected $dates = ['lahir'];
+
+    // public function dokters() {
+    //     return $this->hasMany(Dokter::class);
+    // }
+
+    
 }

@@ -46,7 +46,7 @@
             <span>Pasien</span>
         </a>
     </li>
-    <!-- Nav Item - Pages Collapse Menu -->
+    {{-- <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
             aria-expanded="true" aria-controls="collapsePages">
@@ -62,7 +62,17 @@
 
             </div>
         </div>
+    </li> --}}
+
+    <li class="nav-item">
+        <a class="nav-link" href="/jadwal">
+            <i class="fas fa-fw fa-table">
+
+            </i>
+            <span>Jadwal Praktek</span>
+        </a>
     </li>
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 
@@ -89,7 +99,7 @@
 
 
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="/dokter">
             <i class="fa fa-user-md"></i>
             <span>Dokter</span></a>
     </li>

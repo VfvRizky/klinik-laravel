@@ -94,8 +94,14 @@ class PasienController extends Controller
     public function edit($id)
     {
         $pasien = Pasien::findOrfail($id);
-        return view('pasien-form-edit', compact('pasien'));
+        return view('pasien-rekammedis', compact('pasien'));
     }
+
+    // public function ubah($id)
+    // {
+    //     $pasien = Pasien::findOrfail($id);
+    //     return view('pasien-form-edit', compact('pasien-rekammedis'));
+    // }
 
     /**
      * Update the specified resource in storage.

@@ -1,10 +1,10 @@
 <?php
 
-
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PasienController;
-use Illuminate\Support\Facades\Auth;
-
+use App\Http\Controllers\DokterController;
+use App\Http\Controllers\JadwalController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,25 +16,27 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+Route::view('/', 'index');
 
 
-Route::get('/', function () {
-    return view('index');
+Route::middleware(['auth', 'roles:superadmin,admin'])->group(function () {
+    Route::middleware('roles:superadmin')->group(function () {
+        // Route::resource('user', UserController::class);    
+    });
+
+    Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
+
+    Route::view("pasien-form", 'pasien-form');
+   
+
+    route::resource('/pasien', PasienController::class);
+
+    route::resource('/dokter', DokterController::class);
+    Route::view("dokter-form", 'dokter-form');
+
+    route::resource('/jadwal', JadwalController::class);
+    Route::view("jadwal-form", 'jadwal-form');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
 
-Route::get('/pasien-form', function () {
-    return view('pasien-form');
-});
-
-// route::get('/pasien', [PasienController::class, 'pasiencreate']);
-// route::post('/pasienstore', [PasienController::class, 'pasienstore'])->name('pasienstore');
-route::resource('/pasien', PasienController::class);
-
-Auth::routes();
-
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+require __DIR__.'/auth.php';

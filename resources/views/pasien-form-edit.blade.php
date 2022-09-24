@@ -21,6 +21,8 @@
   
   @endif  
     <div class="container">
+      <h1>Perubahan Data Pasien</h1>
+        <br>
     <form action="{{route('pasien.update', $pasien->id) }}" method="post" enctype="multipart/form-data">
       @csrf
       @method('PUT')

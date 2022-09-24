@@ -26,6 +26,8 @@
 
     @endif
     <div class="container">
+        <h1>Pasien Baru</h1>
+        <br>
         <form action="{{ route('pasien.store') }}" method="post">
             @csrf
             </-------------------------------------------------------- Pengisi
@@ -93,11 +95,11 @@
             <div class="form-group row">
                 <label class="col-form-label col-sm-2 pt-0">Jenis Kelamin</label>
                 <div class="col-sm-5">
-                    <select name="Kelamin" class="form-control @error('Kelamin') is-invalid @enderror">
+                    <select name="Kelamin" value="{{ old('Kelamin') }}" class="form-control @error('Kelamin') is-invalid @enderror">
 
-                        <option selected value=""></option>
-                        <option value="laki-laki">Laki-laki</option>
-                        <option value="perempuan">Perempuan</option>
+                        <option selected value="">pilih</option>
+                        <option value="laki-laki" {{ old('Kelamin') != 'laki-laki' ?: 'selected' }}>Laki-laki</option>
+                        <option value="perempuan" {{ old('Kelamin') != 'perempuan' ?: 'selected' }}>Perempuan</option>
                     </select>
                     @error('Kelamin')
                         <div class="invalid-feedback">
@@ -130,12 +132,12 @@
                 <div class="col-sm-3">
                     <select name="Agama" class="form-control @error('Agama') is-invalid @enderror">
                         <option selected value=""></option>
-                        <option value="islam">Islam</option>
-                        <option value="protestan">Kristen Protestan</option>
-                        <option value="katolik">Kristen Katolik</option>
-                        <option value="hindu">Hindu</option>
-                        <option value="buddha">Buddha</option>
-                        <option value="konghucu">Konghucu</option>
+                        <option value="islam" {{ old('Agama') != 'islam' ?: 'selected' }}>Islam</option>
+                        <option value="protestan" {{ old('Agama') != 'protestan' ?: 'selected' }}>Kristen Protestan</option>
+                        <option value="katolik" {{ old('Agama') != 'katolik' ?: 'selected' }}>Kristen Katolik</option>
+                        <option value="hindu" {{ old('Agama') != 'hindu' ?: 'selected' }}>Hindu</option>
+                        <option value="buddha" {{ old('Agama') != 'buddha' ?: 'selected' }}>Buddha</option>
+                        <option value="konghucu" {{ old('Agama') != 'konghucu' ?: 'selected' }}>Konghucu</option>
                     </select>
                     @error('Agama')
                         <div class="invalid-feedback">
