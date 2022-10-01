@@ -20,7 +20,8 @@ Tugas Akhirrrrrr
 
 
 # Database sementara
-![desain-database](https://user-images.githubusercontent.com/73746365/158311326-bf524620-cea0-4771-9614-3960a05a0b11.JPG)
+![image](https://user-images.githubusercontent.com/73746365/193379611-2040b141-275f-4cef-8ac4-d6e67f4e012c.png)
+
 
 
 # PROTOTYPE dan Mockup sementara
