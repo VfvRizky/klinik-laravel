@@ -14,8 +14,8 @@ class JadwalController extends Controller
      */
     public function index()
     {
-        $jadwalpraktek = Jadwal::get();
-        return view('jadwal', compact('jadwalpraktek'));
+        $jadwalvariabel = Jadwal::get();
+        return view('jadwal', compact('jadwalvariabel'));
     }
 
     /**
@@ -43,7 +43,7 @@ class JadwalController extends Controller
 
         $Jadwal= Jadwal::create([
 
-            'jadwal'=>$request->Jadwal
+            'jadwalpraktek'=>$request->Jadwal
 
         ]);
 
@@ -53,12 +53,12 @@ class JadwalController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Jadwal  $jadwal
+     * @param  \App\Models\Jadwal  $jadwalvariabel
      * @return \Illuminate\Http\Response
      */
-    public function show(Jadwal $jadwal)
+    public function show(Jadwal $jadwalvariabel)
     {
-        $jadwal = Jadwal::where('id', $jadwal)->get();
+        $jadwalvariabel = Jadwal::where('id', $jadwalvariabel)->get();
         return view('jadwal', compact('jadwal'));
     }
 
@@ -92,7 +92,7 @@ class JadwalController extends Controller
          $jadwal = Jadwal::find($id);
  
          $jadwal->update([
-             'jadwal' => $request->Jadwal
+             'jadwalpraktek' => $request->Jadwal
          ]);
  
          return redirect()->route('jadwal.index')->with('success', 'Jadwal telah diubah');

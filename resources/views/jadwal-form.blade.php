@@ -34,9 +34,9 @@
         </--------------------------------------------------------Jadwal Praktek-----------------------------------------------------------------------------------* />
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Jadwal Praktek</label>
-                <div class="col-sm-5">
+                <div class="col-sm-7">
                     <input type="text" class="form-control @error('Jadwal') is-invalid @enderror" name="Jadwal"
-                        placeholder="Jadwal" value="{{ old('Jadwal') }}">
+                        placeholder="tuliskan jadwal..." value="{{ old('Jadwal') }}">
                     @error('Jadwal')
                         <div class="invalid-feedback">
                             "Jadwal masih kosong

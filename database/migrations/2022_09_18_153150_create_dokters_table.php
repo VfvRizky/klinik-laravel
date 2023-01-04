@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('alamat')->nullable();
             $table->string('spesialis');
             $table->string('telepon');
-            $table->string('jadwal');
+            $table->string('jadwalpraktek');
 
             $table->timestamps();
         });

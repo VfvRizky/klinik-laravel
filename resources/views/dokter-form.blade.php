@@ -110,11 +110,11 @@
             <br> --}}
             <div class="form group row">
                 <label class="col-form-label col-sm-2 pt-0">Jadwal Praktek</label>
-                <div class="col-sm-3">
+                <div class="col-sm-8">
                     <select name="Jadwal" class="form-control @error('Jadwal') is-invalid @enderror">
                         <option selected value="">pilih jadwal...</option>
-                        @foreach ($jadwals as $jadwal)
-                        <option value="{{ $jadwal->id }}">{{ $jadwal->jadwal }}</option>
+                        @foreach ($jadwalvariabel as $jadwal)
+                        <option value="{{ $jadwal->id }}">{{ $jadwal->jadwalpraktek }}</option>
                         @endforeach
                     </select>
                     @error('Jadwal')

@@ -69,18 +69,23 @@
         
 
       </--------------------------------------------------------Jadwal-----------------------------------------------------------------------------------*/>
-    
+      
+      <div class="form group row">
+        <label class="col-form-label col-sm-2 pt-0">Jadwal Praktek Lama</label>
+        <div class="col-sm-8">
+          <input class="form-control" name="Jadwal" placeholder="jadwal..." type="text" value="{{ $dokter->jadwalpraktek }}" readonly>
+        </div>
+      </div>
+      
+      
     <div class="form group row">
         <label class="col-form-label col-sm-2 pt-0">Jadwal Praktek</label>
-        <div class="col-sm-3">
-          <select name="Jadwal" class="form-control" value="{{ $dokter->jadwal}}">
+        <div class="col-sm-8">
+          <select name="Jadwal" class="form-control" value="{{ $dokter->jadwalvariabel}}">
             <option selected value ="">tentukan jadwal praktek...</option>
-            @foreach ($jadwals as $jadwal)
-                        <option value="{{ $jadwal->id }}">{{ $jadwal->jadwal }}</option>
+            @foreach ($jadwalvariabel as $jadwal)
+                        <option value="{{ $jadwal->id }}">{{ $jadwal->jadwalpraktek }}</option>
                         @endforeach
-          </select>
-     
-            
           </select>
         </div>
       </div>

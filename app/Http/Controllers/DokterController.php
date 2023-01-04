@@ -28,8 +28,8 @@ class DokterController extends Controller
     {
         // return view('dokter-form');
 
-        $jadwals = Jadwal::all();
-        return view('dokter-form', compact('jadwals'));
+        $jadwalvariabel = Jadwal::all();
+        return view('dokter-form', compact('jadwalvariabel'));
 
         
     }
@@ -58,7 +58,7 @@ class DokterController extends Controller
             'alamat'=>$request->Alamat,            
             'spesialis'=>$request->Spesialis,            
             'telepon'=>$request->Telepon,
-            'jadwal'=>$request->Jadwal
+            'jadwalpraktek'=>$request->Jadwal
 
         ]);
      
@@ -86,9 +86,9 @@ class DokterController extends Controller
      */
     public function edit($id)
     {
-        $jadwals = Jadwal::all();
+        $jadwalvariabel = Jadwal::all();
         $dokter = Dokter::findOrfail($id);
-        return view('dokter-form-edit', compact('dokter','jadwals'));
+        return view('dokter-form-edit', compact('dokter','jadwalvariabel'));
     }
 
     /**
@@ -122,7 +122,7 @@ class DokterController extends Controller
             'alamat'=>$request->Alamat,            
             'spesialis'=>$request->Spesialis,            
             'telepon'=>$request->Telepon,
-            'jadwal'=>$request->Jadwal
+            'jadwalpraktek'=>$request->Jadwal
 
         ]);
 

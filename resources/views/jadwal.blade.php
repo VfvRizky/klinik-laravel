@@ -31,10 +31,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($jadwalpraktek as $jp)
+                    @foreach ($jadwalvariabel as $jp)
                         <tr>
                             <td> {{ $loop->iteration }} </td>
-                            <td> {{ $jp->jadwal }} </td>
+                            <td> {{ $jp->jadwalpraktek }} </td>
 
                             </-------------------------------------------------------- edit
                                 -----------------------------------------------------------------------------------* />

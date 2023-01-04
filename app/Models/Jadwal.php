@@ -9,11 +9,11 @@ class Jadwal extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'jadwal'
+        'jadwalpraktek'
         
     ];
     protected $guarded =['id'];
-    public function jadwal()
+    public function dokter()
     {
 
         return $this->hasMany(Dokter::class);

@@ -32,7 +32,7 @@
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">Jadwal Lama</label>
       <div class="col-sm-5" >
-        <input type="text" class="form-control" name ="Jadwal" placeholder="Jadwal" value="{{ $jadwal->jadwal }}" readonly>
+        <input type="text" class="form-control" name ="Jadwal" placeholder="Jadwal" value="{{ $jadwal->jadwalpraktek }}" readonly>
       </div>
     </div>
 
@@ -40,7 +40,7 @@
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Jadwal Baru</label>
           <div class="col-sm-5" >
-            <input type="text" class="form-control" name ="Jadwal" placeholder="Jadwal" value="{{ $jadwal->jadwal }}">
+            <input type="text" class="form-control" name ="Jadwal" placeholder="Jadwal" value="{{ $jadwal->jadwalpraktek }}">
           </div>
         </div>
         
