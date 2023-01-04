@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="{{ asset ('css/sb-admin-2.css') }}" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-    <title>Dashboard|Edit Jadwal</title>
-</head>
-<body>
+<title>Ubah Jadwal</title>
     @include('partials.navdashboard')
     
   @if ($errors->any())
@@ -28,7 +17,7 @@
       @method('PUT')
       
 
-    </--------------------------------------------------------Jadwal-----------------------------------------------------------------------------------*/>
+    </--------------------------------------------------------Jadwal lama-----------------------------------------------------------------------------------*/>
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">Jadwal Lama</label>
       <div class="col-sm-5" >
@@ -36,7 +25,7 @@
       </div>
     </div>
 
-    </--------------------------------------------------------Jadwal-----------------------------------------------------------------------------------*/>
+    </--------------------------------------------------------Jadwal baru-----------------------------------------------------------------------------------*/>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Jadwal Baru</label>
           <div class="col-sm-5" >
@@ -55,5 +44,3 @@
       </form>
     </div>
 
-</body>
-</html>

@@ -1,3 +1,4 @@
+<title>Database Pasien </title>
 @extends('layouts.main')
 @section('content')
     @if ($errors->any())
@@ -14,12 +15,14 @@
         </div>
     @endif
     <div class="container">
-        <h1>Data Pasien</h1>
+        <h1>Database Pasien</h1>
+        <h3>Klinik {{ env("APP_NAME") }}</h3>
         <br>
 
         </-------------------------------------------------------- Tabel
             -----------------------------------------------------------------------------------* />
-        <a href="/pasien/create" type="button" class="btn btn-success">Tambah Pasien</a>
+        <a href="/tambahpasienadmin" type="button" class="btn btn-success">
+            <i class="fas fa-plus text-white"></i> <i class="fas fa-address-book text-white"></i>  Tambah Pasien</a>
         <br />
         <div class="table-responsive">
             <table class="table table-flush" id="products-list">
@@ -43,10 +46,11 @@
                     @foreach ($datapasien as $p)
                         <tr>
                             <td> {{ $loop->iteration }} </td>
-                            <td> {{ $p->kodepasien }} </td>
+                            <td> <a href="{{ route('pasien.edit', $p->id) }}" data-bs-toggle="tooltip" data-bs-original-title="Lihat Pasien">
+                                <i class="fas fa-book text-success"></i>{{ $p->kodepasien }} </td>
                             <td> {{ $p->nama }} </td>
                             <td> {{ $p->alamat }} </td>
-                            <td> {{ $p->lahir->format('Y/m/d') }} </td>
+                            <td> {{ $p->lahir->format('Y/M(m)/d') }} </td>
                             <td> {{ $p->nik }} </td>
                             <td> {{ $p->kelamin }} </td>
                             <td> {{ $p->telepon }} </td>
@@ -57,24 +61,14 @@
                             </-------------------------------------------------------- edit
                                 -----------------------------------------------------------------------------------* />
                             <td class="text-sm">
-                                {{-- <a href="{{ route('pasien.edit', $p->id) }}" class="mx-3" data-bs-toggle="tooltip"
-                                    data-bs-original-title="Edit Pasien">
-                                    <i class="fas fa-pen text-warning"></i>
-                                </a> --}}
-
-                                </-------------------------------------------------------- lihat
-                                    -----------------------------------------------------------------------------------* />
-                                <a href="{{ route('pasien.edit', $p->id) }}" data-bs-toggle="tooltip" data-bs-original-title="Lihat Pasien">
-                                    <i class="fas fa-book text-success"></i>
-                                </a>
-
                                 </-------------------------------------------------------- hapus
                                     -----------------------------------------------------------------------------------* />
                                 <form action="{{ route('pasien.destroy', $p->id) }}" method="POST">
                                     @method('DELETE')
                                     @csrf
-                                    <button type="submit" class="badge bg-danger"
-                                        onClick="return confirm('Yakin ingin hapus data?')">hapus</button>
+                                    <button type="submit" class="btn btn-danger"
+                                        onClick="return confirm('Yakin ingin hapus data?')">
+                                        <i class="fas fa-trash"></i></button>
 
                                 </form>
                             </td>
@@ -92,46 +86,20 @@
             $(document).ready(function() {
                 $('#products-list').DataTable({
                     dom: 'lBfrtip',
-                    orderable: [
-                        [11, "asc"]
-                    ],
                     lengthMenu: [
                         [5, 10, 25, 50, 100, 1000, -1],
                         ['5', '10', '25', '50', '100', '1000', 'All']
                     ],
                     buttons: [{
-                            extend: 'csv',
-                            text: 'Export',
-                            exportOptions: {
-                                modifier: {
-                                    page: 'all',
-                                    search: 'none'
-                                },
-                                columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-                            }
+                            extend: 'excel',
+                            text: 'Excel',
+                            messageTop: 'Data Pasien Dicetak pada Tanggal '+'{{  \Carbon\Carbon::now()->format("d-M(m)-Y") }}'
                         },
                         {
-                            extend: 'pdf',
-                            text: 'Pdf',
-                            exportOptions: {
-                                modifier: {
-                                    page: 'all',
-                                    search: 'none'
-                                },
-                                columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-                            }
+                            extend: 'copy',
+                            text: 'Copy Isi',
+                            messageTop: 'Data Pasien di Copy pada Tanggal '+'{{  \Carbon\Carbon::now()->format("d-M(m)-Y") }}'                 
                         },
-                        {
-                            extend: 'print',
-                            text: 'Print',
-                            exportOptions: {
-                                modifier: {
-                                    page: 'all'
-                                },
-                                columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-                            }
-                        },
-
                     ],
                     language: {
                         "searchPlaceholder": "Cari nama pasien",

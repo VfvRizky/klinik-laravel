@@ -4,7 +4,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Poliklinik MajuSejahtera - Dashboard</title>
+<title>Poliklinik {{ env("APP_NAME") }} - Dashboard</title>
 
 <!-- Custom fonts for this template-->
 <link href="{{ asset ('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">

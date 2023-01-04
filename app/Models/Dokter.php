@@ -12,16 +12,26 @@ class Dokter extends Model
     protected $fillable = [
         'nama',
         'alamat',
-        'spesialis',
+        'id_poli',
         'telepon',
         'jadwalpraktek'
         
     ];
     protected $guarded =['id'];
 
-    // public function pasiens(){
-    //     return $this->belongsTo(Pasien::class);
-    // }
+    public function jadwal()
+    {
+        return $this->belongsTo(Jadwal::class, 'jadwalpraktek', 'id');
     
+    }
+
+    public function rekam(){
+        return $this->hasMany(Rekam::class);
+    }
+
+    public function poli()
+    {
+        return $this->belongsTo(Poli::class, 'id_poli');
+    }
 }
 

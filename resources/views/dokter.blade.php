@@ -1,3 +1,4 @@
+<title>Dokter</title>
 @extends('layouts.main')
 @section('content')
     @if ($errors->any())
@@ -19,7 +20,8 @@
 
         </-------------------------------------------------------- Tabel
             -----------------------------------------------------------------------------------* />
-        <a href="/dokter/create" type="button" class="btn btn-success">Tambah Dokter</a>
+        <a href="/dokter/create" type="button" class="btn btn-success">
+            <i class="fas fa-plus text-white"></i> <i class="fas fa-user-md text-white"></i>  Tambah Dokter</a>
         <br />
         <div class="table-responsive">
             <table class="table table-flush" id="products-list">
@@ -40,31 +42,26 @@
                             <td> {{ $loop->iteration }} </td>
                             <td> {{ $d->nama }} </td>
                             <td> {{ $d->alamat }} </td>
-                            <td> {{ $d->spesialis }} </td>
+                            <td> {{ $d->poli->name ?? "Poli kosong"}} </td>
                             <td> {{ $d->telepon }} </td>
-                            <td> {{ $d->jadwalpraktek}} </td>
+                            <td> {{ $d->jadwal->jadwalpraktek ?? "jadwal kosong"}} </td>
 
                             </-------------------------------------------------------- edit
                                 -----------------------------------------------------------------------------------* />
                             <td class="text-sm">
-                                <a href="{{ route('dokter.edit', $d->id) }}" class="mx-3" data-bs-toggle="tooltip"
+                                <a href="{{ route('dokter.edit', $d->id) }}" class="btn btn-warning" data-bs-toggle="tooltip"
                                     data-bs-original-title="Edit Dokter">
-                                    <i class="fas fa-pen text-warning"></i>
+                                    <i class="fas fa-pen text-white"></i>
                                 </a>
-
-                                {{-- </-------------------------------------------------------- lihat
-                                    -----------------------------------------------------------------------------------* />
-                                <a href="/dokter/create" data-bs-toggle="tooltip" data-bs-original-title="Lihat Dokter">
-                                    <i class="fas fa-book text-success"></i>
-                                </a> --}}
 
                                 </-------------------------------------------------------- hapus
                                     -----------------------------------------------------------------------------------* />
                                 <form action="{{ route('dokter.destroy', $d->id) }}" method="POST">
                                     @method('DELETE')
                                     @csrf
-                                    <button type="submit" class="badge bg-danger"
-                                        onClick="return confirm('Yakin ingin hapus data?')">delete</button>
+                                    <button type="submit" class="btn btn-danger"
+                                        onClick="return confirm('Yakin ingin hapus data?')">
+                                        <i class="fa fa-trash"></i></button>
 
                                 </form>
                             </td>
@@ -82,46 +79,20 @@
             $(document).ready(function() {
                 $('#products-list').DataTable({
                     dom: 'lBfrtip',
-                    orderable: [
-                        [11, "asc"]
-                    ],
                     lengthMenu: [
-                        [5, 10, 25, 50, 100, 1000, -1],
-                        ['5', '10', '25', '50', '100', '1000', 'All']
+                        [10, 100, -1],
+                        ['10', '100', 'All']
                     ],
                     buttons: [{
-                            extend: 'csv',
-                            text: 'Export',
-                            exportOptions: {
-                                modifier: {
-                                    page: 'all',
-                                    search: 'none'
-                                },
-                                columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-                            }
+                            extend: 'excel',
+                            text: 'Excel',
+                            messageTop: 'Data Dokter di Cetak pada tanggal '+'{{  \Carbon\Carbon::now()->format("d-M(m)-Y") }}'
                         },
                         {
-                            extend: 'pdf',
-                            text: 'Pdf',
-                            exportOptions: {
-                                modifier: {
-                                    page: 'all',
-                                    search: 'none'
-                                },
-                                columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-                            }
+                            extend: 'copy',
+                            text: 'Copy Isi',
+                            messageTop: 'Data Dokter di Cetak pada tanggal '+'{{  \Carbon\Carbon::now()->format("d-M(m)-Y") }}'
                         },
-                        {
-                            extend: 'print',
-                            text: 'Print',
-                            exportOptions: {
-                                modifier: {
-                                    page: 'all'
-                                },
-                                columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-                            }
-                        },
-
                     ],
                     language: {
                         "searchPlaceholder": "Cari nama dokter",

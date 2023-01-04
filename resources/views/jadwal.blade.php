@@ -1,3 +1,4 @@
+<title>Jadwal Praktek</title>
 @extends('layouts.main')
 @section('content')
     @if ($errors->any())
@@ -19,8 +20,9 @@
 
         </-------------------------------------------------------- Tabel
             -----------------------------------------------------------------------------------* />
-        <a href="/jadwal/create" type="button" class="btn btn-success">Tambah Jadwal Praktek</a>
-        <br />
+        <a href="/jadwal/create" type="button" class="btn btn-success">
+            <i class="fas fa-plus text-white"></i> <i class="fas fa-calendar text-white"></i>  Tambah Jadwal Praktek</a>
+
         <div class="table-responsive">
             <table class="table table-flush" id="products-list">
                 <thead class="thead-dark">
@@ -35,30 +37,28 @@
                         <tr>
                             <td> {{ $loop->iteration }} </td>
                             <td> {{ $jp->jadwalpraktek }} </td>
-
-                            </-------------------------------------------------------- edit
-                                -----------------------------------------------------------------------------------* />
                             <td class="text-sm">
-                                {{-- <a href="{{ route('jadwal.edit', $jp->id) }}" class="mx-3" data-bs-toggle="tooltip"
-                                    data-bs-original-title="Edit Jadwal">
-                                    <i class="fas fa-pen text-warning"></i>
-                                </a> --}}
-
-                                </-------------------------------------------------------- lihat
+                                </-------------------------------------------------------- edit
                                     -----------------------------------------------------------------------------------* />
-                                <a href="{{ route('jadwal.edit', $jp->id) }}" data-bs-toggle="tooltip" data-bs-original-title="Lihat Pasien">
-                                    <i class="fas fa-calendar text-success"></i>
+                                <a href="{{ route('jadwal.edit', $jp->id) }}" class="btn btn-warning">
+                                    <i class="fas fa-pen text-white"></i>
                                 </a>
 
                                 </-------------------------------------------------------- hapus
                                     -----------------------------------------------------------------------------------* />
-                                <form action="{{ route('jadwal.destroy', $jp->id) }}" method="POST">
+                                    @if(auth()->check() && auth()->user()->is_superadmin === 1)
+                                    
+                                    <form action="{{ route('jadwal.destroy', $jp->id) }}" method="POST">
                                     @method('DELETE')
                                     @csrf
-                                    <button type="submit" class="badge bg-danger"
-                                        onClick="return confirm('Yakin ingin hapus jadwal?')">hapus</button>
-
+                                    <button type="submit" class="btn btn-danger"
+                                        onClick="return confirm('Yakin ingin hapus jadwal?')">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+    
                                 </form>
+                                @endif
+                                
                             </td>
                         </tr>
                     @endforeach
@@ -73,13 +73,9 @@
         <script>
             $(document).ready(function() {
                 $('#products-list').DataTable({
-                    
-                    orderable: [
-                        [1, "asc"]
-                    ],
                     lengthMenu: [
-                        [5, 10, 25, 50, 100, 1000, -1],
-                        ['5', '10', '25', '50', '100', '1000', 'All']
+                        [10, 100, -1],
+                        ['10', '100', 'All']
                     ],
                     
                     language: {

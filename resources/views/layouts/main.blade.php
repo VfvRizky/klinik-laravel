@@ -5,7 +5,7 @@
     @include('partials.head')
 </head>
 
-<body id="page-top">
+<body id="page-top" onload="initClock()">
 
     <!-- Page Wrapper -->
     <div id="wrapper">

@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('role')->after('password')->nullable();
+            $table->integer('is_admin')->after('role')->nullable();
+            $table->integer('is_superadmin')->after('role')->nullable();
         });
     }
 

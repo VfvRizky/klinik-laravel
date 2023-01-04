@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dokter;
+use App\Models\Poli;
 use App\Models\Jadwal;
 use Illuminate\Http\Request;
 
@@ -26,10 +27,11 @@ class DokterController extends Controller
      */
     public function create()
     {
-        // return view('dokter-form');
-
         $jadwalvariabel = Jadwal::all();
-        return view('dokter-form', compact('jadwalvariabel'));
+        return view('dokter-form', [
+            'jadwalvariabel' => $jadwalvariabel,
+            'poli' => Poli::all()
+        ]);
 
         
     }
@@ -56,7 +58,7 @@ class DokterController extends Controller
            
             'nama'=>ucwords(strtolower($request->Nama)),
             'alamat'=>$request->Alamat,            
-            'spesialis'=>$request->Spesialis,            
+            'id_poli'=>$request->Spesialis,            
             'telepon'=>$request->Telepon,
             'jadwalpraktek'=>$request->Jadwal
 
@@ -88,7 +90,8 @@ class DokterController extends Controller
     {
         $jadwalvariabel = Jadwal::all();
         $dokter = Dokter::findOrfail($id);
-        return view('dokter-form-edit', compact('dokter','jadwalvariabel'));
+        $poli = Poli::all();
+        return view('dokter-form-edit', compact('dokter','jadwalvariabel', 'poli'));
     }
 
     /**
@@ -111,8 +114,6 @@ class DokterController extends Controller
 
         ]);
 
-        
-
         $dokteredit = $request->all();
         $dokter = Dokter::find($id);
 
@@ -120,7 +121,7 @@ class DokterController extends Controller
           
             'nama'=>ucwords(strtolower($request->Nama)),
             'alamat'=>$request->Alamat,            
-            'spesialis'=>$request->Spesialis,            
+            'id_poli'=>$request->Spesialis,            
             'telepon'=>$request->Telepon,
             'jadwalpraktek'=>$request->Jadwal
 
